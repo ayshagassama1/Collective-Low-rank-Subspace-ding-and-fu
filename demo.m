@@ -8,7 +8,7 @@ warning off
 K = 2; %% the number of view/classes/sources
 Xs = cell(1,K);
 si = cell(1,K);
-
+tic
 %% data preparation
 load 2view.mat
 Xt1 = NormalizeFea(Xt1);
@@ -44,6 +44,7 @@ options.lambda3 = 1e1;
 options.optP = 3;
 
 Pt = CLRS(Xs,Ys,options);
+toc
 
 %% Test Stage
 Zs = Pt'*Xss;
