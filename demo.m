@@ -21,6 +21,24 @@ Ytt = [Yt1;Yt2];
 Xss = [Xs1;Xs2]';
 Yss = [Ys1;Ys2];
 
+%% Handling incomplete views
+n = size(Xs1, 2);
+
+missing_ratio = 0.3;                                                                
+missing_ratio = floor(n * missing_ratio);
+missing_objs_1 = randperm(n, missing_ratio);
+missing_objs_2 = randperm(n, missing_ratio);
+Xs2(missing_objs) = [];
+Xs1(missing_objs) = [];
+
+O1 = ones(n, size(missing_objs_1, 2));
+O1(missing_objs_1, :) = 0;
+
+O2 = ones(n, size(missing_objs_2, 2));
+O2(missing_objs_2, :) = 0;
+
+Xs1 = Xs1 * O1';
+Xs2 = Xs2 * O2';
 
 %% Initialize the data and variable matrices
 si{1} = size(Xs1,1);
@@ -31,6 +49,8 @@ Xs{2} = Xs2';
 Ys{1} = Ys1;
 Ys{2} = Ys2;
 options.K = K;
+
+
 
 %% dimension for the low-dimensional space
 options.ReducedDim = 200;
