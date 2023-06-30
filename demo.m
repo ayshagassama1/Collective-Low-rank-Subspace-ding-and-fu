@@ -16,29 +16,31 @@ Xt2 = NormalizeFea(Xt2);
 Xs1 = NormalizeFea(Xs1);
 Xs2 = NormalizeFea(Xs2);
 
+%% Handling incomplete views
+n = size(Xs1, 2);
+
+missing_ratio = 0.0;                                                                
+missing_ratio = floor(n * missing_ratio);
+missing_objs_1 = randperm(n, missing_ratio);
+missing_objs_2 = randperm(n, missing_ratio);
+
+Xs1(:, missing_objs_1) = [];
+Xs2(:, missing_objs_2) = [];
+
+O1 = ones(n, n - size(missing_objs_1, 2));
+O1(missing_objs_1, :) = 0;
+
+O2 = ones(n, n - size(missing_objs_2, 2));
+O2(missing_objs_2, :) = 0;
+
+Xs1 = Xs1 * O1';
+Xs2 = Xs2 * O2';
+
 Xtt = [Xt1;Xt2]';
 Ytt = [Yt1;Yt2];
 Xss = [Xs1;Xs2]';
 Yss = [Ys1;Ys2];
 
-%% Handling incomplete views
-n = size(Xs1, 2);
-
-missing_ratio = 0.3;                                                                
-missing_ratio = floor(n * missing_ratio);
-missing_objs_1 = randperm(n, missing_ratio);
-missing_objs_2 = randperm(n, missing_ratio);
-Xs2(missing_objs) = [];
-Xs1(missing_objs) = [];
-
-O1 = ones(n, size(missing_objs_1, 2));
-O1(missing_objs_1, :) = 0;
-
-O2 = ones(n, size(missing_objs_2, 2));
-O2(missing_objs_2, :) = 0;
-
-Xs1 = Xs1 * O1';
-Xs2 = Xs2 * O2';
 
 %% Initialize the data and variable matrices
 si{1} = size(Xs1,1);
