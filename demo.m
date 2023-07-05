@@ -58,7 +58,7 @@ options.lambda3 = 1e1;
 
 %% choose which optimization methods
 %% 1 means solution to P without Low-rank constraint
-%% 2 menas solution to P with Low-rank constraint
+%% 2 means solution to P with Low-rank constraint
 %% 3 means solution to P with Gradient Descent Optimization
 options.optP = 3;
 

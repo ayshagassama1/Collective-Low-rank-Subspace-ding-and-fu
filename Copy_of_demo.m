@@ -33,7 +33,7 @@ Ys{2} = Ys2;
 options.K = K;
 
 %% dimension for the low-dimensional space
-options.ReducedDim = 200;
+options.ReducedDim = 150;
 %% parameter for supervised regularizer
 options.lambda3 = 1e1;
 
@@ -41,7 +41,7 @@ options.lambda3 = 1e1;
 %% 1 means solution to P without Low-rank constraint
 %% 2 menas solution to P with Low-rank constraint
 %% 3 means solution to P with Gradient Descent Optimization
-options.optP = 3;
+options.optP = 2;
 
 Pt = CLRS(Xs,Ys,options);
 

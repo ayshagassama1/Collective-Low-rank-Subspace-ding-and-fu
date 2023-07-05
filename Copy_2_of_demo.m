@@ -19,7 +19,7 @@ Xs2 = NormalizeFea(Xs2);
 %% Handling incomplete views
 n = size(Xs1, 2);
 
-missing_ratio  = 0.01;                                                                
+missing_ratio  = 0.1;                                                                
 missing_ratio  = floor(n * missing_ratio);
 missing_objs_1 = randperm(n, missing_ratio);
 missing_objs_2 = randperm(n, missing_ratio);
@@ -60,9 +60,9 @@ options.lambda3 = 1e1;
 
 %% choose which optimization methods
 %% 1 means solution to P without Low-rank constraint
-%% 2 menas solution to P with Low-rank constraint
+%% 2 means solution to P with Low-rank constraint
 %% 3 means solution to P with Gradient Descent Optimization
-options.optP = 3;
+options.optP = 2;
 
 Pt = CLRS(Xs,Ys,options);
 
