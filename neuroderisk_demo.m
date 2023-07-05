@@ -25,7 +25,7 @@ G{4} = G_unifi;
 G{5} = G_msd;
 
 for i=1:K
-    Xs{i} = NormalizeFea(Xs{i});
+    %Xs{i} = NormalizeFea(Xs{i});
     Xs{i} = Xs{i} * G{i}';
 end
 
@@ -57,7 +57,7 @@ end
 options.K = K;
 
 %% dimension for the low-dimensional space
-options.ReducedDim = 150;
+options.ReducedDim = 50;
 %% parameter for supervised regularizer
 options.lambda3 = 1e1;
 
@@ -67,7 +67,7 @@ options.lambda3 = 1e1;
 %% 3 means solution to P with Gradient Descent Optimization
 options.optP = 2;
 
-Pt = Copy_of_CLRS(Xs,Ys,options);
+Pt = Copy_of_CLRS(Xs,Yss,options);
 
 %% Test Stage
 Zs = Pt'*Xss;

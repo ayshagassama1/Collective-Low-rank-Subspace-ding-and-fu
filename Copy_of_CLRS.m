@@ -147,7 +147,7 @@ while iter < maxIter
         
     end
     %% Update Zz
-    Bz  = lambda3*D'*Pt*Pt'*D;
+    Bz  = lambda3*D'*Pt*(Pt)'*D;
     Zz = lyap(inv(Bz),Hw-Hb+eta*eye(n),-inv(Bz)*Fz);
     len = 0;
     for k =1:K
