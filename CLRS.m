@@ -27,7 +27,7 @@ Pt = rand(d,p);
 
 
 
-%% initialize otehr variables
+%% initialize other variables
 Ji = cell(K,1);
 Zi = cell(K,1);
 Pi = cell(K,1);
