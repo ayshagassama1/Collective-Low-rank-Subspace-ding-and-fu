@@ -19,7 +19,7 @@ Xs2 = NormalizeFea(Xs2);
 %% Handling incomplete views
 n = size(Xs1, 2);
 
-missing_ratio = 0.0;                                                                
+missing_ratio = 0.2;                                                                
 missing_ratio = floor(n * missing_ratio);
 missing_objs_1 = randperm(n, missing_ratio);
 missing_objs_2 = randperm(n, missing_ratio);
