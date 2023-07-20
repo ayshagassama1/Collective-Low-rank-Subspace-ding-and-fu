@@ -17,24 +17,19 @@ Xs1 = NormalizeFea(Xs1);
 Xs2 = NormalizeFea(Xs2);
 
 %% Handling incomplete views
-n = size(Xs1, 2);
+n = min(size(Xs1, 1), size(Xs2, 1));
 
-missing_ratio = 0.2;                                                                
-missing_ratio = floor(n * missing_ratio);
-missing_objs_1 = randperm(n, missing_ratio);
-missing_objs_2 = randperm(n, missing_ratio);
+missing_objs_1 = 1:(n/2);
+missing_objs_2 = (n/2):n;
 
-Xs1(:, missing_objs_1) = [];
-Xs2(:, missing_objs_2) = [];
-
-O1 = ones(n, n - size(missing_objs_1, 2));
+O1 = ones(size(Xs1,1), size(Xs1,2));
 O1(missing_objs_1, :) = 0;
 
-O2 = ones(n, n - size(missing_objs_2, 2));
+O2 = ones(size(Xs2,1), size(Xs2,2));
 O2(missing_objs_2, :) = 0;
 
-Xs1 = Xs1 * O1';
-Xs2 = Xs2 * O2';
+Xs1 = Xs1 .* O1;
+Xs2 = Xs2 .* O2;
 
 Xtt = [Xt1;Xt2]';
 Ytt = [Yt1;Yt2];
